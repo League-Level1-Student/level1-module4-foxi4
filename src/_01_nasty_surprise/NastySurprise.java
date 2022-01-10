@@ -1,6 +1,5 @@
 package _01_nasty_surprise;
 
-import java.awt.event.MouseEvent;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -11,21 +10,29 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class NastySurprise {
-	public static void main(String[] args) {
+public class NastySurprise implements Runnable {
+	
 		JFrame frame = new JFrame();
 		JPanel panel = new JPanel();
 		JButton trick = new JButton();
 		JButton treat = new JButton();
-		//
-			if(trick==) {
-				showPictureFromTheInternet("cutefox.jpeg");
-				
-			}
-			if(treat==) {
-				showPictureFromTheInternet("scaryphotolol.jpeg");
-			}
+		
+		public void run() {
+			trick.setText("Trick");
+			treat.setText("Treat");
+			panel.add(treat);
+			panel.add(trick);
+			frame.add(panel);
+			frame.setVisible(true);
+			//if(trick==) {
+			//	showPictureFromTheInternet("cutefox.jpeg");
+			//	
+			//}
+			//if(treat==) {
+			//	showPictureFromTheInternet("scaryphotolol.jpeg");
+			//}
 		}
+
 	private void showPictureFromTheInternet(String imageUrl) {
 	    try {
 	        URL url = new URL(imageUrl);
@@ -38,7 +45,6 @@ public class NastySurprise {
 	    } catch (MalformedURLException e) {
 	        e.printStackTrace();
 	    }
-	    //i (sorta) forgot how to do user interface but i looked at other methods that i did before but
-	    //i think im missing some things/doing some things wrong
+
 	}
-	}
+}
