@@ -1,5 +1,10 @@
 package _01_nasty_surprise;
 
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -10,7 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class NastySurprise implements Runnable {
+public class NastySurprise implements Runnable, ActionListener {
 	
 		JFrame frame = new JFrame();
 		JPanel panel = new JPanel();
@@ -18,19 +23,21 @@ public class NastySurprise implements Runnable {
 		JButton treat = new JButton();
 		
 		public void run() {
+			commands();
+		
+		}
+		public void commands() {
 			trick.setText("Trick");
 			treat.setText("Treat");
+			trick.addActionListener(this);
+			treat.addActionListener(this);
+			panel.setPreferredSize(new Dimension(500, 500));
+			
 			panel.add(treat);
 			panel.add(trick);
 			frame.add(panel);
 			frame.setVisible(true);
-			//if(trick==) {
-			//	showPictureFromTheInternet("cutefox.jpeg");
-			//	
-			//}
-			//if(treat==) {
-			//	showPictureFromTheInternet("scaryphotolol.jpeg");
-			//}
+			
 		}
 
 	private void showPictureFromTheInternet(String imageUrl) {
@@ -46,5 +53,17 @@ public class NastySurprise implements Runnable {
 	        e.printStackTrace();
 	    }
 
+	} 
+	
+	public void actionPerformed(ActionEvent e) {
+		 //TODO Auto-generated method stub
+			if(trick==e.getSource()) {
+					showPictureFromTheInternet("https://i.pinimg.com/originals/91/39/01/913901a8b8d9879e9b55feaea99287aa.jpg");
+					
+				}
+			if(treat==e.getSource()) {
+					showPictureFromTheInternet("https://static.tvtropes.org/pmwiki/pub/images/0036_018.png");
+				}
 	}
+
 }
