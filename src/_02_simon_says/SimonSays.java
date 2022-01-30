@@ -95,9 +95,17 @@ JFrame frame = new JFrame(); //?
 		Random random = new Random();
 		// 13. Use the Random and the speak method to either say
 		// "Simon says press this key" or "Press this key"
-random.speak("Simon says press this key");
+if(random.nextBoolean()) {
+	simonSays = true;
+		speak("Simon says press this key");
+}
+else{
+	simonSays = false;
+	speak("Press this key");
+}
 		// 14. Above, set the value of simonSays to true/false appropriately
-		 simonSays = true; //?????
+
+
 	}
 
 	private Component getNextRandomImage() {
