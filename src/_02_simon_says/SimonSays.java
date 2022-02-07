@@ -48,18 +48,24 @@ JFrame frame = new JFrame(); //?
 
 	public void keyPressed(KeyEvent e) {
 		// 15. Make a points variable to track the score.
-
+				int points = 0;
+				e.getKeyCode();
 		// 16. If the keyCode matches the imageIndex and "Simon says"
-
+				//if(KeyCode==imageIndex=="Simon says") {
+			//		points+=1;
+				//}
+				//else {
+				//	points+=1;
+				//}
 		// 17. Increase the value of score
-
+				//16
 		// 18. Use the speak method to tell the user they were correct
-
+				speak("You are correct.");
 		// 19. If the keyCode doesn't match the imageIndex and "Simon didn't
 		// say..."
-
+					//16
 		// 20. Increase the value of score
-
+					//16
 		// 21. Use the speak method to tell the user they were correct
 
 		// 22. Increment tries by 1
@@ -104,7 +110,7 @@ else{
 	speak("Press this key");
 }
 		// 14. Above, set the value of simonSays to true/false appropriately
-
+				//done
 
 	}
 
