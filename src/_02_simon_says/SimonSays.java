@@ -50,34 +50,37 @@ JFrame frame = new JFrame(); //?
 		// 15. Make a points variable to track the score.
 				int points = 0;
 				e.getKeyCode();
+				
 		// 16. If the keyCode matches the imageIndex and "Simon says"
-				//if(KeyCode==imageIndex=="Simon says") {
+			//	if(keyCode==imageIndex=="Simon says") {
+			///		points+=1;
+			//	}
+			///	else {
 			//		points+=1;
-				//}
-				//else {
-				//	points+=1;
-				//}
+			///	}
 		// 17. Increase the value of score
-				//16
+				//done
 		// 18. Use the speak method to tell the user they were correct
 				speak("You are correct.");
 		// 19. If the keyCode doesn't match the imageIndex and "Simon didn't
 		// say..."
-					//16
+					//done
 		// 20. Increase the value of score
-					//16
+					//done
 		// 21. Use the speak method to tell the user they were correct
-
+speak("You're correct.");
 		// 22. Increment tries by 1
-
+				//increase points by 1???
 		// 25. If tries is greater than 9 (or however many you want)...
-
+if(tries>9){
+	speak("Your score is " + points);
+}
 		// 26. Tell the user their score
-
+//done
 		// 27. Exit the program
 
 		// 23. Dispose of the frame
-
+//frame
 		// 24. Call the showImage method to show a new image
 	}
 
