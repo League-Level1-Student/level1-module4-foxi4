@@ -78,10 +78,11 @@ if(tries>9){
 		// 26. Tell the user their score
 //done
 		// 27. Exit the program
-
+ //wut
 		// 23. Dispose of the frame
 //frame
 		// 24. Call the showImage method to show a new image
+showImage();
 	}
 
 	private void showImage() {
