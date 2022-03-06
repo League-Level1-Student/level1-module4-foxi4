@@ -76,11 +76,11 @@ if(tries>9){
 	speak("Your score is " + points);
 }
 		// 26. Tell the user their score
-//done
+//okay
 		// 27. Exit the program
- //wut
+System.exit(0);
 		// 23. Dispose of the frame
-//frame
+frame.dispose();
 		// 24. Call the showImage method to show a new image
 showImage();
 	}
