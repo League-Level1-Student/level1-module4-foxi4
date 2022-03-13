@@ -52,23 +52,28 @@ JFrame frame = new JFrame(); //?
 				e.getKeyCode();
 				
 		// 16. If the keyCode matches the imageIndex and "Simon says"
-			//	if(keyCode==imageIndex=="Simon says") {
-			///		points+=1;
-			//	}
-			///	else {
-			//		points+=1;
-			///	}
+				if(keyPressed==imageIndex&&"Simon says") {
+					points+=1;
+					speak("You're correct.");
+				}
+			else {
+					points+=0;
+				}
+				if(keyPressed!=imageIndex&&"Simon didn't say...") { 
+					points+=1;
+				speak("You are correct.");
+	}
 		// 17. Increase the value of score
 				//done
 		// 18. Use the speak method to tell the user they were correct
-				speak("You are correct.");
+			//ok
 		// 19. If the keyCode doesn't match the imageIndex and "Simon didn't
 		// say..."
 					//done
 		// 20. Increase the value of score
 					//done
 		// 21. Use the speak method to tell the user they were correct
-speak("You're correct.");
+				//ok
 		// 22. Increment tries by 1
 				//increase points by 1???
 		// 25. If tries is greater than 9 (or however many you want)...
