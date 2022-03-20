@@ -30,15 +30,16 @@ public class SimonSays extends KeyAdapter {
 
 	// Complete steps 1 - 7 before you test
 	// 1. Declare a JFrame variable
-JFrame frame = new JFrame(); //?
+	JFrame frame = new JFrame(); // ?
+
 	public void run() {
 		// 2. Add the four images that match keyboard keys like this:
 		images.put(KeyEvent.VK_UP, "up.jpg");
 		images.put(KeyEvent.VK_DOWN, "down.jpg");
 		images.put(KeyEvent.VK_LEFT, "left.jpg");
 		images.put(KeyEvent.VK_RIGHT, "right.jpg");
-		//wth does VK_UP/DOWN/LEFT/RIGHT and KeyEvent do
-		 
+		// wth does VK_UP/DOWN/LEFT/RIGHT and KeyEvent do
+
 		// 3. Use a JOptionPane to tell the user the rules: "Press the matching key when
 		// 'Simon says' otherwise press a different key"
 		JOptionPane.showMessageDialog(null, "Press the matching key when 'Simon says' otherwise press a different key");
@@ -48,46 +49,46 @@ JFrame frame = new JFrame(); //?
 
 	public void keyPressed(KeyEvent e) {
 		// 15. Make a points variable to track the score.
-				int points = 0;
-				e.getKeyCode();
-				
+		int points = 0;
+		int keyPressed = e.getKeyCode();
+
 		// 16. If the keyCode matches the imageIndex and "Simon says"
-				if(keyPressed==imageIndex&&"Simon says") {
-					points+=1;
-					speak("You're correct.");
-				}
-			else {
-					points+=0;
-				}
-				if(keyPressed!=imageIndex&&"Simon didn't say...") { 
-					points+=1;
-				speak("You are correct.");
-	}
+		if (keyPressed == imageIndex && simonSays) {
+			points += 1;
+			speak("You're correct.");
+		} else {//
+			points += 0;
+		}
+		if (keyPressed != imageIndex && simonSays) {
+			points += 1;
+			speak("You are correct.");
+		}
 		// 17. Increase the value of score
-				//done
+		// done
 		// 18. Use the speak method to tell the user they were correct
-			//ok
+		// ok
 		// 19. If the keyCode doesn't match the imageIndex and "Simon didn't
 		// say..."
-					//done
+		// done
 		// 20. Increase the value of score
-					//done
+		// done
 		// 21. Use the speak method to tell the user they were correct
-				//ok
+		// ok
 		// 22. Increment tries by 1
-				//increase points by 1???
+		// increase points by 1???
 		// 25. If tries is greater than 9 (or however many you want)...
-if(tries>9){
-	speak("Your score is " + points);
-}
+		if (tries > 9) {
+			speak("Your score is " + points);
+			System.exit(0);
+		}
 		// 26. Tell the user their score
 //okay
 		// 27. Exit the program
-System.exit(0);
+	 
 		// 23. Dispose of the frame
-frame.dispose();
+		frame.dispose(); //yeah it pretty much orkrs ok alright ty!
 		// 24. Call the showImage method to show a new image
-showImage();
+		showImage();
 	}
 
 	private void showImage() {
@@ -96,30 +97,29 @@ showImage();
 		// 6. Set the frame to visible
 		frame.setVisible(true);
 		// 7. Uncomment the following line to add a random image to your frame
-		 frame.add(getNextRandomImage());
+		frame.add(getNextRandomImage());
 		// 8. Set the name of your frame
-		 frame.setName("Frame");
+		frame.setName("Frame");
 		// 9. Pack the frame
-		 frame.pack();
+		frame.pack();
 		// 10. Set the defaultCloseOperation of your frame to
 		// JFrame.EXIT_ON_CLOSE
-		 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// 11. Add a key listener to the frame
-		 frame.addKeyListener(null);
+		frame.addKeyListener(this); // o
 		// 12. Create a new instance of Random
 		Random random = new Random();
 		// 13. Use the Random and the speak method to either say
 		// "Simon says press this key" or "Press this key"
-if(random.nextBoolean()) {
-	simonSays = true;
-		speak("Simon says press this key");
-}
-else{
-	simonSays = false;
-	speak("Press this key");
-}
+		if (random.nextBoolean()) {
+			simonSays = true;
+			speak("Simon says press this key");
+		} else {
+			simonSays = false;
+			speak("Press this key");
+		}
 		// 14. Above, set the value of simonSays to true/false appropriately
-				//done
+		// done
 
 	}
 
@@ -135,7 +135,7 @@ else{
 	}
 
 	static void speak(String words) {
-		
+
 		if (System.getProperty("os.name").contains("Windows")) {
 			String cmd = "PowerShell -Command \"Add-Type -AssemblyName System.Speech; (New-Object System.Speech.Synthesis.SpeechSynthesizer).Speak('"
 					+ words + "');\"";
