@@ -27,10 +27,11 @@ public class SimonSays extends KeyAdapter {
 	private int tries = 0;
 	private boolean simonSays = false;
 	Date timeAtStart;
+	int points = 0;
 
 	// Complete steps 1 - 7 before you test
 	// 1. Declare a JFrame variable
-	JFrame frame = new JFrame(); // ?
+	JFrame frame = new JFrame(); 
 
 	public void run() {
 		// 2. Add the four images that match keyboard keys like this:
@@ -38,7 +39,7 @@ public class SimonSays extends KeyAdapter {
 		images.put(KeyEvent.VK_DOWN, "down.jpg");
 		images.put(KeyEvent.VK_LEFT, "left.jpg");
 		images.put(KeyEvent.VK_RIGHT, "right.jpg");
-		// wth does VK_UP/DOWN/LEFT/RIGHT and KeyEvent do
+		
 
 		// 3. Use a JOptionPane to tell the user the rules: "Press the matching key when
 		// 'Simon says' otherwise press a different key"
@@ -49,17 +50,15 @@ public class SimonSays extends KeyAdapter {
 
 	public void keyPressed(KeyEvent e) {
 		// 15. Make a points variable to track the score.
-		int points = 0;
 		int keyPressed = e.getKeyCode();
 
 		// 16. If the keyCode matches the imageIndex and "Simon says"
+		tries++; 
 		if (keyPressed == imageIndex && simonSays) {
 			points += 1;
 			speak("You're correct.");
-		} else {//
-			points += 0;
 		}
-		if (keyPressed != imageIndex && simonSays) {
+		if (keyPressed != imageIndex && !simonSays) {
 			points += 1;
 			speak("You are correct.");
 		}
@@ -75,7 +74,7 @@ public class SimonSays extends KeyAdapter {
 		// 21. Use the speak method to tell the user they were correct
 		// ok
 		// 22. Increment tries by 1
-		// increase points by 1???
+		// OH oh wait oh
 		// 25. If tries is greater than 9 (or however many you want)...
 		if (tries > 9) {
 			speak("Your score is " + points);
@@ -86,7 +85,7 @@ public class SimonSays extends KeyAdapter {
 		// 27. Exit the program
 	 
 		// 23. Dispose of the frame
-		frame.dispose(); //yeah it pretty much orkrs ok alright ty!
+		frame.dispose(); 
 		// 24. Call the showImage method to show a new image
 		showImage();
 	}
@@ -99,7 +98,7 @@ public class SimonSays extends KeyAdapter {
 		// 7. Uncomment the following line to add a random image to your frame
 		frame.add(getNextRandomImage());
 		// 8. Set the name of your frame
-		frame.setName("Frame");
+		frame.setName("SimonSays");
 		// 9. Pack the frame
 		frame.pack();
 		// 10. Set the defaultCloseOperation of your frame to
