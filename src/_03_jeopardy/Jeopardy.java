@@ -51,7 +51,7 @@ public class Jeopardy implements ActionListener {
 		frame.setLayout(new BorderLayout());
 
 		// 1. Make the frame show up
-frame.show(); //why?
+frame.setVisible(true); 
 		// 2. Give your frame a title
 frame.setTitle("frame");
 		// 3. Create a JPanel variable to hold the header using the createHeader method
@@ -115,16 +115,17 @@ buttonCount++;
 
 			// Call the askQuestion() method
 		if(buttonPressed==firstButton) {
- askQuestion("question", "answer", 20); 
+ askQuestion("What is the closest planet to us?", "Mercury", 20); 
 		}
 		// Complete the code in the askQuestion() method. When you play the game, the score should change.
 //ok
+		
 		// If the buttonPressed was the secondButton
 if(buttonPressed==secondButton) {
-	askQuestion("questoin??", "answer!!", 50); 
+	askQuestion("Who is the tallest man to have ever lived", "Robert Wadlow", 50); 
 }
 			// Call the askQuestion() method with a harder question
-
+//above
 		// Clear the text on the button that was pressed (set the button text to nothing)
 buttonPressed.setText(null);
 	}
@@ -145,16 +146,21 @@ if(answer.equals(correctAnswer)) {
 	JOptionPane.showMessageDialog(null, "you are correct");
 
 }
+else {
+	prizeMoney--;
+	JOptionPane.showMessageDialog(null, "you are incorrect. The right answer is " + correctAnswer);
+}
+updateScore();
 			// Increase the score by the prizeMoney
-
+//k
 			// Pop up a message to tell the user they were correct
-
+//k
 		// Otherwise
 
 			// Decrement the score by the prizeMoney
-
+//k
 			// Pop up a message to tell the user they were wrong and give them the correct answer
-
+//k
 		// Call the updateScore() method
 
 	}

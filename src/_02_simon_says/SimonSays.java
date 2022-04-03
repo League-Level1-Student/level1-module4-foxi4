@@ -62,6 +62,13 @@ public class SimonSays extends KeyAdapter {
 			points += 1;
 			speak("You are correct.");
 		}
+		if(keyPressed!= imageIndex && simonSays) {
+			speak("You are incorrect");
+		}
+		if(keyPressed == imageIndex&& !simonSays) {
+			speak("You are incorrect");
+		}
+		
 		// 17. Increase the value of score
 		// done
 		// 18. Use the speak method to tell the user they were correct
@@ -77,7 +84,7 @@ public class SimonSays extends KeyAdapter {
 		// OH oh wait oh
 		// 25. If tries is greater than 9 (or however many you want)...
 		if (tries > 9) {
-			speak("Your score is " + points);
+			speak("Your score is " + points + "out of 9");
 			System.exit(0);
 		}
 		// 26. Tell the user their score
