@@ -53,16 +53,17 @@ public class Jeopardy implements ActionListener {
 		// 1. Make the frame show up
 frame.setVisible(true); 
 		// 2. Give your frame a title
-frame.setTitle("frame");
+frame.setTitle("Jeopardy");
 		// 3. Create a JPanel variable to hold the header using the createHeader method
-JPanel panel = createHeader("header"); 
+JPanel panel = createHeader("Trivia"); 
 
 		// 4. Add the header component to the quizPanel
 quizPanel.add(panel);
 		// 5. Add the quizPanel to the frame
 frame.add(quizPanel);
 		// 6. Use the createButton method to set the value of firstButton
-firstButton = createButton("5?"); //is this the correct way?
+ firstButton= createButton("30");
+ secondButton
 		// 7. Add the firstButton to the quizPanel
 quizPanel.add(firstButton);
 		// 8. Write the code to complete the createButton() method below. Check that your
@@ -73,9 +74,13 @@ quizPanel.add(firstButton);
 secondButton = createButton("a button"); //??
 		// 10. Add the secondButton to the quizPanel
 quizPanel.add(secondButton);
+//quizPanel.add(thirdButton);
+//quizPanel.add(fourthButton);
 		// 11. Add action listeners to the buttons (2 lines of code)
 firstButton.addActionListener(this);
 secondButton.addActionListener(this);
+//thirdButton.addActionListener(this);
+//fourthButton.addActionListener(this);
 		// 12. Write the code to complete the actionPerformed() method below
 //ok
 		// 13. Add buttons so that you have $200, $400, $600, $800 and $1000 questions
@@ -102,27 +107,34 @@ button.setText(dollarAmount);
 		// Increment the buttonCount (this should make the layout vertical)
 buttonCount++;
 		// Return your new button instead of the temporary button
-		return new JButton("temporary button");
+		return new JButton();
+		
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		
 		// Remove this temporary message after testing:
-		JOptionPane.showMessageDialog(null, "pressed " + ((JButton) e.getSource()).getText() + " button");
+		//JOptionPane.showMessageDialog(null, "pressed " + ((JButton) e.getSource()).getText() + " button");
 
 		JButton buttonPressed = (JButton) e.getSource();
 		// If the buttonPressed was the firstButton
 
 			// Call the askQuestion() method
 		if(buttonPressed==firstButton) {
- askQuestion("What is the closest planet to us?", "Mercury", 20); 
+ askQuestion("What is the closest planet to us? (make sure to capitalise)", "Mercury", 20); 
 		}
 		// Complete the code in the askQuestion() method. When you play the game, the score should change.
 //ok
 		
 		// If the buttonPressed was the secondButton
 if(buttonPressed==secondButton) {
-	askQuestion("Who is the tallest man to have ever lived", "Robert Wadlow", 50); 
+	askQuestion("Who is the tallest man to have ever lived? (make sure to capitalise)", "Robert Wadlow", 50); 
+}
+if(buttonPressed==thirdButton) {
+	askQuestion("What is the fastest land animal? (just the animal's name)", "cheetah", 30);
+}
+if(buttonPressed==fourthButton) {
+	askQuestion("What is a group of crows called?", "a murder", 10);
 }
 			// Call the askQuestion() method with a harder question
 //above
@@ -131,7 +143,7 @@ buttonPressed.setText(null);
 	}
 
 	private void askQuestion(String question, String correctAnswer, int prizeMoney) {
-		
+		//score used to be prizeMoney
 		// Use the playJeopardyTheme() method to play music while the use thinks of an answer
 		playJeopardyTheme();
 		// Remove this temporary message and replace it with a pop-up that asks the user the question
@@ -142,12 +154,12 @@ buttonPressed.setText(null);
 		stopJeopardyTheme();
 		// If the answer is correct
 if(answer.equals(correctAnswer)) {
-	prizeMoney++;
+	score+=prizeMoney;
 	JOptionPane.showMessageDialog(null, "you are correct");
 
 }
 else {
-	prizeMoney--;
+	score-=prizeMoney;
 	JOptionPane.showMessageDialog(null, "you are incorrect. The right answer is " + correctAnswer);
 }
 updateScore();
@@ -205,11 +217,11 @@ updateScore();
 	}
 
 	void showCorrectImage() {
-		showImage("correct.jpg");
+		showImage("correct.jpg");   //??
 	}
 
 	void showIncorrectImage() {
-		showImage("incorrect.jpg");
+		showImage("incorrect.jpg"); //??
 	}
 
 	private void showImage(String fileName) {
