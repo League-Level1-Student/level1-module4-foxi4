@@ -35,7 +35,7 @@ import javax.swing.JPanel;
 public class Jeopardy implements ActionListener {
 	private JButton firstButton;
 	private JButton secondButton;
-	private JButton thirdButton, fourthButton;
+	private JButton thirdButton, fourthButton, fifthButton;
 	private JPanel quizPanel;
 	private int score = 0;
 	private JLabel scoreBox = new JLabel("0");
@@ -53,7 +53,7 @@ public class Jeopardy implements ActionListener {
 		// 1. Make the frame show up
 frame.setVisible(true); 
 		// 2. Give your frame a title
-frame.setTitle("Jeopardy");
+frame.setTitle("Jeopardy!");
 		// 3. Create a JPanel variable to hold the header using the createHeader method
 JPanel panel = createHeader("Trivia"); 
 
@@ -62,8 +62,8 @@ quizPanel.add(panel);
 		// 5. Add the quizPanel to the frame
 frame.add(quizPanel);
 		// 6. Use the createButton method to set the value of firstButton
- firstButton= createButton("30");
- secondButton
+ firstButton= createButton("$200");
+
 		// 7. Add the firstButton to the quizPanel
 quizPanel.add(firstButton);
 		// 8. Write the code to complete the createButton() method below. Check that your
@@ -71,16 +71,22 @@ quizPanel.add(firstButton);
 //ok :)
 		// 9. Use the secondButton variable to hold a button using the createButton
 		// method
-secondButton = createButton("a button"); //??
+secondButton = createButton("$400"); //??
 		// 10. Add the secondButton to the quizPanel
 quizPanel.add(secondButton);
-//quizPanel.add(thirdButton);
-//quizPanel.add(fourthButton);
+thirdButton = createButton("$600");
+quizPanel.add(thirdButton);
+fourthButton = createButton("$800");
+quizPanel.add(fourthButton);
+fifthButton = createButton("$1000");
+quizPanel.add(fifthButton);
 		// 11. Add action listeners to the buttons (2 lines of code)
 firstButton.addActionListener(this);
 secondButton.addActionListener(this);
-//thirdButton.addActionListener(this);
-//fourthButton.addActionListener(this);
+thirdButton.addActionListener(this);
+fourthButton.addActionListener(this);
+fifthButton.addActionListener(this);
+
 		// 12. Write the code to complete the actionPerformed() method below
 //ok
 		// 13. Add buttons so that you have $200, $400, $600, $800 and $1000 questions
@@ -107,34 +113,35 @@ button.setText(dollarAmount);
 		// Increment the buttonCount (this should make the layout vertical)
 buttonCount++;
 		// Return your new button instead of the temporary button
-		return new JButton();
+		return button; 
 		
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		
 		// Remove this temporary message after testing:
-		//JOptionPane.showMessageDialog(null, "pressed " + ((JButton) e.getSource()).getText() + " button");
-
 		JButton buttonPressed = (JButton) e.getSource();
 		// If the buttonPressed was the firstButton
 
 			// Call the askQuestion() method
-		if(buttonPressed==firstButton) {
- askQuestion("What is the closest planet to us? (make sure to capitalise)", "Mercury", 20); 
+		if(buttonPressed==thirdButton) {
+ askQuestion("What is the closest planet to us? (make sure to capitalise)", "Mercury", 600); 
 		}
 		// Complete the code in the askQuestion() method. When you play the game, the score should change.
 //ok
 		
 		// If the buttonPressed was the secondButton
-if(buttonPressed==secondButton) {
-	askQuestion("Who is the tallest man to have ever lived? (make sure to capitalise)", "Robert Wadlow", 50); 
-}
-if(buttonPressed==thirdButton) {
-	askQuestion("What is the fastest land animal? (just the animal's name)", "cheetah", 30);
-}
 if(buttonPressed==fourthButton) {
-	askQuestion("What is a group of crows called?", "a murder", 10);
+	askQuestion("Who is the tallest man to have ever lived? (make sure to capitalise)", "Robert Wadlow", 800); 
+}
+if(buttonPressed==firstButton) {
+	askQuestion("What is the fastest land animal? (just the animal's name, capitalized)", "Cheetah", 200);
+}
+if(buttonPressed==secondButton) {
+	askQuestion("What is a group of crows called? (a '', capitalized)", "a murder", 400);
+}
+if(buttonPressed==fifthButton) {
+	askQuestion("What is the day after Christmas called? (make sure to capitalise)", "Boxing Day", 1000);
 }
 			// Call the askQuestion() method with a harder question
 //above
@@ -144,7 +151,7 @@ buttonPressed.setText(null);
 
 	private void askQuestion(String question, String correctAnswer, int prizeMoney) {
 		//score used to be prizeMoney
-		// Use the playJeopardyTheme() method to play music while the use thinks of an answer
+		// Use the playJeopardyTheme() method to play music while the user thinks of an answer
 		playJeopardyTheme();
 		// Remove this temporary message and replace it with a pop-up that asks the user the question
 		 String answer = JOptionPane.showInputDialog(question);
@@ -156,11 +163,12 @@ buttonPressed.setText(null);
 if(answer.equals(correctAnswer)) {
 	score+=prizeMoney;
 	JOptionPane.showMessageDialog(null, "you are correct");
-
+	
 }
 else {
 	score-=prizeMoney;
 	JOptionPane.showMessageDialog(null, "you are incorrect. The right answer is " + correctAnswer);
+	
 }
 updateScore();
 			// Increase the score by the prizeMoney
@@ -174,7 +182,7 @@ updateScore();
 			// Pop up a message to tell the user they were wrong and give them the correct answer
 //k
 		// Call the updateScore() method
-
+//k
 	}
 
 	public void playJeopardyTheme() {
