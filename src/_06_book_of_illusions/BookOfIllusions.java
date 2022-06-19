@@ -20,7 +20,7 @@ public class BookOfIllusions extends MouseAdapter {
 
 	// 1. Make a JFrame variable and initialize it using "new JFrame()"
 	JFrame frame = new JFrame();
-
+	JLabel label;
 	public void run() {
 		// 2. make the frame visible
 		// 3. set the size of the frame
@@ -35,27 +35,29 @@ public class BookOfIllusions extends MouseAdapter {
 		// 10. add a mouse listener to your frame (hint: use *this*) 
 		frame.setVisible(true);
 		frame.setSize(1000, 1000);
-		String image = "Solomon-Illusions-3.jpg"; 
+		String image = "CafeWallIllusion.png"; 
 		
-		
-	JLabel label = loadImageFromComputer(image);
-	frame.add(label);
-	frame.addMouseListener(this);
-	frame.pack();
 
 	
-		
+//
+		label = loadImageFromComputer(image);
+	frame.add(label);
+frame.pack();
+frame.addMouseListener(this);
+
+	
+
 		
 		
 	}
 
 	public void mousePressed(MouseEvent e) {
 		System.out.println("clicked!");
-		frame.removeAll();
-		//String image2 = "Solomon-Illusions-9.jpg";
-		//JLabel label = loadImageFromComputer(image2);
-		//frame.add(label);
-		//frame.pack();
+		frame.remove(label);
+		String image2 = "NeverEndingTriangleIllusion.png";
+		label = loadImageFromComputer(image2);
+		frame.add(label);
+		frame.pack(); //ok
 		// 11. Print "clicked!" to the console when the mouse is pressed
 		// 12. remove everything from the frame that was added earlier
 		// 13. load a new image like before (this is more than one line of code)

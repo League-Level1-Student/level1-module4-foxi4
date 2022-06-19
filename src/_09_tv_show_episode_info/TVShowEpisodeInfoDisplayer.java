@@ -1,6 +1,8 @@
 package _09_tv_show_episode_info;
 
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -8,17 +10,40 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-public class TVShowEpisodeInfoDisplayer {
-	
+public class TVShowEpisodeInfoDisplayer implements ActionListener {
+	JFrame frame = new JFrame("TV Show Info");
+	JPanel panel = new JPanel();
+	JButton button = new JButton("Submit");
+	JTextField text = new JTextField(15);
+	String show = text.getText();
 	public TVShowEpisodeInfoDisplayer() {
-		
+		frame.add(panel);
+		panel.add(button);
+		panel.add(text);
+		button.addActionListener(this);
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.pack();
 	}
-
+//ok thx
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+		JOptionPane.showMessageDialog(null, getShowEpisodeData(show));
+		//or
+		//String test = getShowEpisodeData(show);
+		//JOptionPane.showMessageDialog(null, test);
+		//basically when i type asomething, like the office, the method errors or something
+	}
 	
-	
-	
+	//
 
 /////////////////////////DO NOT MODIFY ANY CODE BELOW THIS LINE//////////////////////////////////////////
 	
@@ -74,4 +99,10 @@ public class TVShowEpisodeInfoDisplayer {
 		
 		return res;
 	}
+
+
+
+
+
+	
 }
